@@ -1,0 +1,34 @@
+*{
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    outline: none;
+}
+html,body,#app{
+    height: 100%;
+}
+a{
+    text-decoration: none;
+}
+.flex{
+    display: flex;
+}
+.j-c{
+    justify-content: center;
+}
+.j-s{
+    justify-content: space-between;
+}
+.a-c{
+    align-items: center;
+}
+.j-e{
+    justify-content: flex-end;
+}
+.f-w{
+    flex-wrap: wrap;
+}
+/* 
+.n-menu-item--selected{
+    --item-color-active: rgba(255, 152, 106);
+} */

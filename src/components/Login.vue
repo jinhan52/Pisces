@@ -7,14 +7,29 @@
         />
       </div>
       <div class="form_box">
-        <el-form ref="login_ref" :rules="login_rules" :model="loginform" label-width="0px" class="formdetails_box">
+        <el-form
+          ref="login_ref"
+          :rules="login_rules"
+          :model="loginform"
+          label-width="0px"
+          class="formdetails_box"
+        >
           <!-- 账号 -->
-          <el-form-item prop="username">
-            <el-input v-model="loginform.username" prefix-icon="el-icon-user-solid" placeholder="请输入账号"></el-input>
+          <el-form-item prop="phone">
+            <el-input
+              v-model="loginform.phone"
+              prefix-icon="el-icon-user-solid"
+              placeholder="请输入账号"
+            ></el-input>
           </el-form-item>
           <!-- 密码  -->
           <el-form-item prop="password">
-            <el-input type="password" v-model="loginform.password" prefix-icon="el-icon-s-finance" placeholder="请输入密码"></el-input>
+            <el-input
+              type="password"
+              v-model="loginform.password"
+              prefix-icon="el-icon-s-finance"
+              placeholder="请输入密码"
+            ></el-input>
           </el-form-item>
           <!-- 登录 -->
           <el-form-item class="flex j-e">
@@ -32,36 +47,52 @@ export default {
   data() {
     return {
       loginform: {
-        username: '',
-        password: ''
+        phone: "",
+        password: "",
       },
       login_rules: {
-        username: [
-          { required: true, message: '请输入账号', trigger: 'blur' }
-        ],
+        phone: [{ required: true, message: "请输入账号", trigger: "blur" }],
         password: [
-          { required: true, message: '请输入密码', trigger: 'blur' },
-          { min: 6, max: 15, message: '密码需要在6-15位中', trigger: 'blur' }
-        ]
-      }
-    }
+          { required: true, message: "请输入密码", trigger: "blur" },
+          { min: 6, max: 15, message: "密码需要在6-15位中", trigger: "blur" },
+        ],
+      },
+    };
   },
   methods: {
-    resetloginFrom(){
+    resetloginFrom() {
       this.$refs.login_ref.resetFields();
     },
-    login(){
+    login() {
       // 判断表单验证
       const self = this;
       this.$refs.login_ref.validate((valid) => {
-        if (valid){
-          console.log('object');
-          console.log(self.$router);
-          self.$router.push('/home');
+        const parms = {
+          phone: self.loginform.phone,
+          password: self.loginform.password,
+        };
+        if (valid) {
+          self.$http.post("/auth/authLogin", parms, {
+          headers: {
+            "Content-Type": "application/json;charset=UTF-8"
+          },
+        }).then(
+            res => {
+              if (res.data.status === 20000){
+                self.$cookies.set("wnwtoken", res.data.tokens.token, "3d", self.$http.baseURL);
+                self.$cookies.set("wnwrefreshtoken", res.data.tokens.token, "30d", self.$http.baseURL);
+                localStorage.setItem("user", JSON.stringify(res.data.data.user));
+                localStorage.setItem("menu", JSON.stringify(res.data.data.menu));
+                self.$router.push("/home");
+              } else {
+                console.log(2);
+              }
+            }
+          );
         }
-      })
-    }
-  }
+      });
+    },
+  },
 };
 </script>
  

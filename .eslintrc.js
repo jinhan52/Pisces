@@ -22,6 +22,9 @@ module.exports = {
     'indent': 'off',
     'space-before-function-paren': 'off',
     'space-before-blocks': 'off',
-    'padded-blocks': 'off'
+    'padded-blocks': 'off',
+    'quotes': "off",
+    'keyword-spacing': "off",
+    'no-useless-return': "off"
   }
 }

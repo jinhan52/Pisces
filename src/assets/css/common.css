@@ -28,6 +28,24 @@ a{
 .f-w{
     flex-wrap: wrap;
 }
+.full-hegiht{
+    height: 100%;
+}
+.full-width{
+    width: 100%;
+}
+.cu-pointer{
+    cursor: pointer
+}
+.margin-tw{
+    margin: 20px;
+}
+.margin-left{
+    margin-left: 15px;
+}
+.margin-top{
+    margin-top: 15px;
+}
 /* 
 .n-menu-item--selected{
     --item-color-active: rgba(255, 152, 106);

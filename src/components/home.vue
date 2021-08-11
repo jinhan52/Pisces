@@ -1,22 +1,33 @@
 <template>
   <el-container class="home_box">
-    <el-aside width="200px">
-      <div class="logo_box">Logo</div>
+    <el-aside width="230px">
+      <MyAsider></MyAsider>
     </el-aside>
     <el-container>
-      <el-header> Header </el-header>
+      <el-header>
+        <MyHeaders></MyHeaders>
+      </el-header>
       <el-main>
-        Main
+        <MyMain></MyMain>
       </el-main>
     </el-container>
   </el-container>
 </template>
  
 <script>
+import MyHeaders from "../components/Hearder"
+import MyAsider from "../components/Asider"
+import MyMain from "../components/Main.vue"
+
 export default {
   data() {
     return {};
   },
+  components: {
+    MyHeaders,
+    MyAsider,
+    MyMain
+  }
 };
 </script>
  
@@ -25,14 +36,12 @@ export default {
   height: 100%;
 }
 .el-aside {
-  background-color: #1b2a47;
+  background-color: #001428;
 }
 .el-header {
   border-bottom: 1px solid #ececec;
 }
-.logo_box {
-  width: 100%;
-  height: 60px;
-  background-color: blue;
+.el-main{
+  background-color: #F5F7F9;
 }
 </style>

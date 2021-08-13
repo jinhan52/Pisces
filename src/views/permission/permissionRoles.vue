@@ -31,7 +31,7 @@
         <el-table-column prop="rolename" label="角色名称"> </el-table-column>
         <el-table-column prop="createTime" label="创建时间"> </el-table-column>
         <el-table-column prop="updateTime" label="修改时间"> </el-table-column>
-        <el-table-column label="操作">
+        <el-table-column label="操作" width="250px">
           <template slot-scope="scope">
             <el-button
               type="primary"

@@ -61,10 +61,10 @@ Vue.use(Switch)
 Vue.use(Drawer)
 Vue.use(Select)
 Vue.use(Option)
-Vue.use(Notification)
+// Vue.use(Notification)
 Vue.use(Popover)
 Vue.use(Tree)
 Vue.use(Popconfirm)
 Vue.use(Transfer)
-
+Vue.component(Notification.name, Notification)
 Vue.prototype.$notify = Notification;

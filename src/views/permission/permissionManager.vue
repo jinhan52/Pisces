@@ -43,7 +43,7 @@
         </el-table-column>
         <el-table-column prop="email" label="email地址"> </el-table-column>
         <el-table-column label="操作">
-          <template slot-scope="scope">
+          <template slot-scope="scope" width="160px">
             <div>
               <el-button
                 type="primary"

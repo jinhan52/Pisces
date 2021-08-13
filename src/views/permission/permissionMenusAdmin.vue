@@ -36,21 +36,22 @@
           label="ID"
           width="50px"
         ></el-table-column>
-        <el-table-column prop="menuname" label="菜单名称"> </el-table-column>
+        <el-table-column prop="menuname" label="菜单名称" width="130px"> </el-table-column>
         <el-table-column prop="menu" label="菜单组件"> </el-table-column>
         <el-table-column prop="menubaseurl" label="菜单路径"> </el-table-column>
         <el-table-column
+          width="130px"
           prop="parent.menuname"
           label="父级菜单"
         ></el-table-column>
-        <el-table-column label="Icon图标" width="150px">
+        <el-table-column label="Icon图标" width="100px">
           <template slot-scope="scope">
             <i class="bigIcon" :class="scope.row.menuicon"></i>
           </template>
         </el-table-column>
         <el-table-column prop="createTime" label="创建时间"> </el-table-column>
         <el-table-column prop="updateTime" label="修改时间"> </el-table-column>
-        <el-table-column label="操作">
+        <el-table-column label="操作" width="160px">
           <template slot-scope="scope">
             <el-button
               type="primary"

@@ -27,7 +27,11 @@ import {
     Drawer,
     Select,
     Option,
-    Notification
+    Notification,
+    Popover,
+    Tree,
+    Popconfirm,
+    Transfer
 } from 'element-ui'
 
 Vue.use(Button)
@@ -58,5 +62,9 @@ Vue.use(Drawer)
 Vue.use(Select)
 Vue.use(Option)
 Vue.use(Notification)
+Vue.use(Popover)
+Vue.use(Tree)
+Vue.use(Popconfirm)
+Vue.use(Transfer)
 
 Vue.prototype.$notify = Notification;

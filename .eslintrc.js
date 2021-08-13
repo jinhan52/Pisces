@@ -25,6 +25,7 @@ module.exports = {
     'padded-blocks': 'off',
     'quotes': "off",
     'keyword-spacing': "off",
-    'no-useless-return': "off"
+    'no-useless-return': "off",
+    'no-useless-escape': "off"
   }
 }

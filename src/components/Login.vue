@@ -53,8 +53,7 @@ export default {
       login_rules: {
         phone: [{ required: true, message: "请输入账号", trigger: "blur" }],
         password: [
-          { required: true, message: "请输入密码", trigger: "blur" },
-          { min: 6, max: 15, message: "密码需要在6-15位中", trigger: "blur" },
+          { required: true, message: "请输入密码", trigger: "blur" }
         ],
       },
     };
@@ -62,6 +61,13 @@ export default {
   methods: {
     resetloginFrom() {
       this.$refs.login_ref.resetFields();
+    },
+    OnlyNotify(msg, typeStauts = "success", sucess = "成功") {
+      this.$notify({
+        title: sucess,
+        message: msg,
+        type: typeStauts,
+      });
     },
     login() {
       // 判断表单验证
@@ -72,23 +78,40 @@ export default {
           password: self.loginform.password,
         };
         if (valid) {
-          self.$http.post("/auth/authLogin", parms, {
-          headers: {
-            "Content-Type": "application/json;charset=UTF-8"
-          },
-        }).then(
-            res => {
-              if (res.data.status === 20000){
-                self.$cookies.set("wnwtoken", res.data.tokens.token, "3d", self.$http.baseURL);
-                self.$cookies.set("wnwrefreshtoken", res.data.tokens.token, "30d", self.$http.baseURL);
-                localStorage.setItem("user", JSON.stringify(res.data.data.user));
-                localStorage.setItem("menu", JSON.stringify(res.data.data.menu));
+          self.$http
+            .post("/auth/authLogin", parms, {
+              headers: {
+                "Content-Type": "application/json;charset=UTF-8",
+              },
+            })
+            .then((res) => {
+              if (res.data.status === 20000) {
+                self.$cookies.set(
+                  "wnwtoken",
+                  res.data.tokens.token,
+                  "3d",
+                  self.$http.baseURL
+                );
+                self.$cookies.set(
+                  "wnwrefreshtoken",
+                  res.data.tokens.token,
+                  "30d",
+                  self.$http.baseURL
+                );
+                localStorage.setItem(
+                  "user",
+                  JSON.stringify(res.data.data.user)
+                );
+                localStorage.setItem(
+                  "menu",
+                  JSON.stringify(res.data.data.menu)
+                );
                 self.$router.push("/home");
               } else {
-                console.log(2);
+                this.OnlyNotify("你输入的账号密码有误,请重新输入!", "error", "失败");
+                this.loginform.password = "";
               }
-            }
-          );
+            });
         }
       });
     },
